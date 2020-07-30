@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import ReactDOM from 'react-dom';
 import Button from './components/ButtonsGrid';
+import Display from './components/Display';
 
 const numbers = [
     {
@@ -45,16 +45,54 @@ const numbers = [
     }
 ];
 
+const specialChar = [
+    {
+        label: "+"
+    },
+    {
+        label: "-"
+    },
+    {
+        label: "/"
+    },
+    {
+        label: "*"
+    },
+    {
+        label:"="
+    },
+    {
+        label:"."
+    },
+    {
+        label:"AC"
+    },
+    {
+        label: "X"
+    },
+    {
+        label: "X"
+    },
+    {
+        label: "X"
+    }
+
+    
+
+]
+
 
 const App = () => {
     const [selected, setSelected] = useState(numbers);
 
     return (
         <div className="ui inverted segment">
+            <Display />
             <Button 
                 numbers={numbers} 
                 selected ={selected}
                 onSelectedChange={setSelected}
+                char={specialChar}
                 />
         </div>
     )
