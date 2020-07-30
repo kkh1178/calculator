@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-const Button = ({numbers, selected, onSelectedChange, char}) => {
+const ButtonsGrid = ({numbers, selected, onSelectedChange, char}) => {
 
     console.log(char)
 
@@ -10,9 +10,8 @@ const Button = ({numbers, selected, onSelectedChange, char}) => {
             // console.log(number)
             if (number.value > 0) {
                 return (
-                    <div className="one wide column">
+                    <div key={number.value} className="one wide column">
                         <div 
-                            key={number.value}
                             className="large fluid ui inverted blue button"
                             onClick={()=>{onSelectedChange(number.value)}}
                             >
@@ -24,9 +23,8 @@ const Button = ({numbers, selected, onSelectedChange, char}) => {
                 )
             } else if (number.value===0) {
                 return (
-                    <div className="two wide column">
+                    <div key={number.value} className="two wide column">
                         <div 
-                            key={number.value}
                             className="large fluid ui inverted purple button"
                             onClick={()=>{onSelectedChange(number.value)}}>
                             {number.label}
@@ -50,7 +48,7 @@ const Button = ({numbers, selected, onSelectedChange, char}) => {
         });
         return calculator;
     }
-    console.log(gridBuild(char.slice(0)))
+    // console.log(gridBuild(char.slice(0)))
 
     return (
         <div className="ui grid">
@@ -82,4 +80,4 @@ const Button = ({numbers, selected, onSelectedChange, char}) => {
     )
 };
 
-export default Button;
+export default ButtonsGrid;

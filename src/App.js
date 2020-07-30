@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Button from './components/ButtonsGrid';
+import ButtonsGrid from './components/ButtonsGrid';
 import Display from './components/Display';
 
 const numbers = [
@@ -68,10 +68,10 @@ const specialChar = [
         label:"AC"
     },
     {
-        label: "X"
+        label: "("
     },
     {
-        label: "X"
+        label: ")"
     },
     {
         label: "X"
@@ -88,7 +88,7 @@ const App = () => {
     return (
         <div className="ui inverted segment">
             <Display />
-            <Button 
+            <ButtonsGrid 
                 numbers={numbers} 
                 selected ={selected}
                 onSelectedChange={setSelected}
