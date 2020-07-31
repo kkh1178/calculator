@@ -1,22 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-const Display = () => {
-    const [math, setMath] = useState("");
+const Display = ({calculatorExpression}) => {
 
-    console.log(math)
+
     
     return (
         <div className="ui grid">
             <div className="row">
-                <div className="four wide column">
-                    <div className="ui input">
-                        <input 
-                            type="number"
-                            // pattern="[0-9]*-/+()" 
-                            value={math} 
-                            onChange={(event) => setMath(event.target.value)}
-                            placeholder="0"></input>
-                    </div>  
+                <div className="container">
+                    <div class="ui input">
+                        <input type="text" value={calculatorExpression.join(" ")}/>
+                    </div>
                 </div>
             </div>
         </div>
