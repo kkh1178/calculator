@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import Button from './Button';
 import Display from './Display';
 import {evaluate} from 'mathjs';
 
 const ButtonsGrid = ({numbers}) => {
-    // setting our piece of state (buttonValue) to null; setButtonValue is the function that will change our piece of state.
+
+    // setting the state to a blank array
     const [calculatorExpression, updateCalculatorExpression] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -12,38 +12,39 @@ const ButtonsGrid = ({numbers}) => {
     // rerenders the state
     const onTitleClick = (value) => {
         setErrorMessage(null);
+        // Using the equal button to run the math
         if (value === "=") {
             try {
-                updateCalculatorExpression([evaluate(calculatorExpression.join(" "))]);
+                // creating the mathematical expression
+                // console.log(calculatorExpression.join(""));
+                updateCalculatorExpression([evaluate(calculatorExpression.join(""))]);
             } catch (error) {
+                // if the user enters something incorrectly, show an error message and then 
+                // reset the state to blank
                 setErrorMessage(`${calculatorExpression.join(" ")} is not a valid expression`)
-                updateCalculatorExpression([])
+                updateCalculatorExpression([]);
             }
+            // delete the expression
         } else if (value==="AC") {
             updateCalculatorExpression([])
         } else {
             updateCalculatorExpression([...calculatorExpression, value]);
         }
-        console.log(`Clicked on me ${value}`, calculatorExpression)
+        // console.log(`Clicked on me ${value}`, calculatorExpression)
     }
 
     const gridBuild = (numbers) => {
 
-        
         // interating through the numbers array and returning the button color based on value.
         const calculator = numbers.map((number) => {
-            // console.log(number)
             if (number.value > 0) {
                 return (
                     <div key={number.value} className="one wide column">
                         <div 
                             className="large fluid ui inverted blue button"
-                            // onClick={()=>{onSelectedChange(number.value)}}
-                            // onClick={()=> console.log(`Clicked on me ${number.label}`)}
                             onClick={()=>onTitleClick(number.label)}
                             >
                             {number.label}
-                            {/* <Button buttonValue={number.label}></Button> */}
                         </div>
                     </div>
             
@@ -54,12 +55,9 @@ const ButtonsGrid = ({numbers}) => {
                     <div key={number.value} className="two wide column">
                         <div 
                             className="large fluid ui inverted purple button"
-                            // onClick={()=>{onSelectedChange(number.value)}}
-                            // onClick={()=> console.log(`Clicked on me ${number.label}`)}
                             onClick={()=>onTitleClick(number.label)}
                             >
                             {number.label}
-                            {/* <Button buttonValue={number.label}></Button> */}
                         </div>
                     </div>
                     
@@ -69,12 +67,9 @@ const ButtonsGrid = ({numbers}) => {
                     <div className="one wide column">
                         <div 
                             className="large fluid ui inverted green button"
-                            // onClick={()=>{onSelectedChange(number.value)}}
-                            // onClick={()=> console.log(`Clicked on me ${number.label}`)}
                             onClick={()=>onTitleClick(number.label)}
                             >
                             {number.label}
-                            {/* <Button buttonValue={number.label}></Button> */}
                         </div>
                     </div>
                 )
@@ -86,7 +81,6 @@ const ButtonsGrid = ({numbers}) => {
 
     return (
         <div className="ui grid">
-            {/* <h1>{calculatorExpression}</h1> */}
             <Display calculatorExpression={calculatorExpression}></Display>
             {errorMessage ? errorMessage: ""}
             <div className="row">

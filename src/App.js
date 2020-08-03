@@ -43,17 +43,17 @@ const numbersAndChar = [
         value: 0
     },
     {
-        label: "+",
-        value: "/"
+        label: "+"
     },
     {
         label: "-"
     },
     {
-        label: "÷"
+        // label: "÷"
+        label: '/'
     },
     {
-        label: "x"
+        label: "*"
     },
     {
         label:"="

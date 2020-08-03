@@ -7,10 +7,9 @@ const Display = ({calculatorExpression}) => {
     return (
         <div className="ui grid">
             <div className="row">
-                <div className="container">
-                    <div class="ui input">
-                        <input type="text" value={calculatorExpression.join(" ")}/>
-                    </div>
+                <div className="display">
+                        {/* <input type="text" placeholder="0" value={calculatorExpression.join(" ")}/> */}
+                    <div placeholder="0">{calculatorExpression.join(" ")}</div>
                 </div>
             </div>
         </div>
